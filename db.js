@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const mongoUrl = process.env.mongoUrl
-const mongOptions = {useNewUrlParser : true, useUnifiedTopology: true, useFindAndModify: true, useCreateIndex: true}
+const mongOptions = {useNewUrlParser : true,autoIndex: true, useUnifiedTopology: true, useFindAndModify: true, useCreateIndex: true}
 
 const connectDB = () =>{
     mongoose.connect(mongoUrl, mongOptions)

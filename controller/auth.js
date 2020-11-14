@@ -7,6 +7,7 @@ exports.register = (req,res)=>{
             message: 'User Already Exists'
         })
         const{firstname, lastname, email, password} = req.body
+
         const _user = new User({firstname, lastname, email, password, username: Math.random().toString()})
         
         _user.save((err,data)=>{
@@ -48,13 +49,4 @@ exports.signin =(req,res)=>{
             return res.status(400).json({message: err.message})
         }
     })
-}
-
-//middleware function
-exports.requireSignIn = (req,res,next)=>{
-    const token = req.headers.authorisation.split(" ")[1]
-    console.log(token)
-    const user = jwt.verify(token, process.env.JWT_SECRET)
-    req.user = user
-    next()
 }
